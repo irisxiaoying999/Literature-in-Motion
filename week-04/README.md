@@ -1,4 +1,4 @@
-# Week 4 —  Git & GitHub
+# Week 4 — Practicing Git & GitHub
 
 ## 📖 Objectives
 By the end of this week’s class, you should be able to:
@@ -11,21 +11,66 @@ By the end of this week’s class, you should be able to:
 
 ---
 
-## 🤹 Hands-on: Branches, Folders, Files, and Commits
+## 🛠️ Step 1 — Fork the instructor repo
+First, make your own copy of the course repository on GitHub.
 
-We will now practice the full cycle:  
-- Check which branch you’re on.  
-- Create folders and files.  
-- Stage changes.  
-- Commit changes.  
-- Push everything to your fork.  
+1. Go to the instructor repo:  
+   👉 [https://github.com/MonirehRazavi/literature-in-motion](https://github.com/MonirehRazavi/literature-in-motion)  
+2. Click **Fork** (top-right).  
+3. You now have your own copy under your account, for example:  
+   👉 `https://github.com/<your-username>/literature-in-motion`
 
-The commands are the same on **Mac** and **Ubuntu/WSL**.
+**Explanation:** Forking creates a copy of the instructor’s repo in your own GitHub account. This is your personal sandbox — you can edit without affecting the instructor’s original repo.
 
 ---
 
-### Step 4 — Check your current branch
-First, let’s see which branch you are on.
+## 🛠️ Step 2 — Navigate to your class folder
+Before cloning, make sure you are inside the folder where you want to keep this project on your computer.
+
+```bash
+cd ~/Documents/LiteratureInMotion     # move into your class folder
+pwd                                   # show your current location (path)
+ls                                    # list files and folders in the current directory
+```
+
+**Explanation:**  
+- `cd` = change directory.  
+- `pwd` = print working directory (where you are now).  
+- `ls` = list contents of the current folder.  
+
+This ensures you are in the right place before cloning.
+
+---
+
+## 🛠️ Step 3 — Clone your fork
+Cloning makes a full copy of your fork on your computer.
+
+```bash
+git clone https://github.com/<your-username>/literature-in-motion.git
+cd literature-in-motion
+```
+
+- `git clone` downloads your fork from GitHub to your computer.  
+- `cd literature-in-motion` moves you into the cloned folder.
+
+Check you cloned your fork (not the instructor’s):
+
+```bash
+git remote -v
+```
+
+Expected output:
+```
+origin  https://github.com/<your-username>/literature-in-motion.git (fetch)
+origin  https://github.com/<your-username>/literature-in-motion.git (push)
+```
+
+**Explanation:** `git remote -v` shows which repo your local copy is connected to. It should point to your username, not the instructor’s.
+
+---
+
+## 🛠️ Step 4 — Check your current branch
+Let’s see which branch you are on.
 
 ```bash
 git branch
@@ -38,11 +83,13 @@ git branch
 git checkout -b week4-<yourname>
 ```
 
-👉 This keeps your changes separate and safe.
+**Explanation:**  
+- `git branch` shows all branches and the current one.  
+- `git checkout -b` both creates a new branch and switches to it. This keeps your work organized and safe.
 
 ---
 
-### Step 5 — Make a notes folder and file
+## 🛠️ Step 5 — Make a notes folder and file
 We’ll add a **new folder** and a **personal note file**.
 
 ```bash
@@ -50,17 +97,23 @@ mkdir -p notes
 echo "This is my first Week 4 note" > notes/<yourname>.txt
 ```
 
+- `mkdir -p notes` creates a folder called `notes` (the `-p` option prevents errors if it already exists).  
+- `echo ... > file.txt` creates a new file with some text inside.
+
 **Commit explanation:**  
-This commit will record the creation of the `notes/` folder and your first text file inside it. It shows the moment you started adding personal notes for Week 4.
+This commit records the creation of the `notes/` folder and your first text file. It shows the moment you started adding personal notes for Week 4.
 
 ```bash
 git add notes/<yourname>.txt
 git commit -m "Add my Week 4 note"
 ```
 
+- `git add` stages the file, telling Git to track it.  
+- `git commit -m` saves a snapshot with your message.
+
 ---
 
-### Step 6 — Make a maps folder and placeholder file
+## 🛠️ Step 6 — Make a maps folder and placeholder file
 Now let’s add a `maps/` folder. Git ignores empty folders, so we add a small “placeholder” file to keep the folder tracked.
 
 ```bash
@@ -78,7 +131,7 @@ git commit -m "Add maps folder with placeholder file"
 
 ---
 
-### Step 7 — Make a data folder and simple CSV file
+## 🛠️ Step 7 — Make a data folder and simple CSV file
 Next, create a `data/` folder and add a tiny CSV file with sample content.
 
 ```bash
@@ -86,6 +139,10 @@ mkdir -p data
 echo "name,city" > data/class.csv
 echo "Anne,Ottawa" >> data/class.csv
 ```
+
+- `echo "..." > file.csv` creates a new file with text inside.  
+- The first line is the header: `name,city`.  
+- The second line adds one row of data.
 
 **Commit explanation:**  
 This commit saves your first structured dataset (`class.csv`) in the `data/` folder. It shows that you practiced creating and storing tabular data in the repo.
@@ -97,7 +154,7 @@ git commit -m "Add class.csv with sample data"
 
 ---
 
-### Step 8 — Push your branch to GitHub
+## 🛠️ Step 8 — Push your branch to GitHub
 Now we’ll send all of your commits to GitHub.  
 The first time you push, Git will ask for your **GitHub username** and **Personal Access Token (PAT)**. Paste your PAT when it asks for your password.
 
@@ -105,12 +162,15 @@ The first time you push, Git will ask for your **GitHub username** and **Persona
 git push -u origin week4-<yourname>
 ```
 
-**Commit explanation:**  
-This is not a new commit — it uploads the three commits you already made to your fork on GitHub so you can see them online.
+**Explanation:**  
+- `git push` uploads your commits to GitHub.  
+- `-u origin week4-<yourname>` links your local branch to your fork’s branch, so you can just type `git push` next time.
+
+This is not a new commit — it just uploads the three commits you already made.
 
 ---
 
-### Step 9 — Verify online
+## 🛠️ Step 9 — Verify online
 1. Go to your fork on GitHub.  
 2. Switch to your `week4-<yourname>` branch.  
 3. You should now see three commits in your history, corresponding to:  
@@ -121,6 +181,8 @@ This is not a new commit — it uploads the three commits you already made to yo
 ---
 
 ## ✅ What you practiced
+- Forking the instructor repo on GitHub.  
+- Cloning your fork to your computer.  
 - Checking and creating branches.  
 - Adding new folders and files.  
 - Writing clear commit messages.  
