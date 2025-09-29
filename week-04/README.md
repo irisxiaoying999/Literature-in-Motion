@@ -30,19 +30,13 @@ ls                                    # list contents of the folder
 
 ---
 
-
 ## 🛠️ Step 3 — Clone your fork
-
-Use your fork’s URL (replace <your-username> with your GitHub username).
+Use **your fork’s URL** (replace `<your-username>` with your GitHub username).
 
 ```bash
 git clone https://github.com/<your-username>/literature-in-motion.git
 cd literature-in-motion
 
-Check you cloned your fork (not the instructor’s):
-
-```bash
-git remote -v
 
 
 Expected:
